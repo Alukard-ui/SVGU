@@ -5,7 +5,7 @@ from models import Pairs
 from pony.orm import db_session, select
 import datetime
 
-Pairs_time = [[8,30],[10,10],[11,50],[14,00],[15,40],[17,20],[19,00]]
+Pairs_time= [[8,30],[10,10],[11,50],[14,00],[15,40],[17,20],[19,00]]
 
 @db_session
 def group_handler_Schedule(text):
@@ -27,12 +27,13 @@ def group_handler_room(text):
     text = ''
     _order = 1
     _day = datetime.datetime.today().weekday()
-    _hour = int(datetime.datetime.today().hour)
-    _mines = int(datetime.datetime.today().minute)
-    for time in Pairs_time:
+    _hour = datetime.datetime.today().hour
+    _mines = datetime.datetime.today().minute
+    for time in range(len(Pairs_time)):
         _order += 1
-        if (_hour < time[1] and (_mines < time[2])):
+        if ((_hour < Pairs_time[time][0]) and (_mines < Pairs_time[time][1])):
            return finde_room(_day,_order)
+    return "Аудитория не обнаружена"
 
 
 def sort(_day, week):
