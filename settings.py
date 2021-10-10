@@ -15,6 +15,13 @@ INTENTS = [
         'scenario': None,
         'answer':None,
         'group_handler':'group_handler_Schedule'
+    },
+    {
+    'name':'room',
+        'tokens':('?аудитория','?ауд'),
+        'scenario': None,
+        'answer':None,
+        'group_handler':'group_handler_room'
     }
 ]
 
