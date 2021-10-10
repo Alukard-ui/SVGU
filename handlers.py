@@ -14,7 +14,10 @@ def group_handler_Schedule(text):
     week = int(datetime.date.today().strftime("%V")) % 2 == 0
     text += sort(_day,week)
     text += 'На завтра\n\n'
-    text += sort(_day+1,week)
+    if (_day == 7):
+        text += sort(1,week)
+    else:
+        text += sort(_day+1,week)
     return text
 
 
@@ -23,6 +26,7 @@ def sort(_day,week):
         return "пар нет"
     astext =''
     even = select(u.id for u in Pairs if u.day_of_week == _day)
+    even.sort_by(lambda x:x.day_of_week)
     for i in even:
         Pairss = Pairs.get(id=i)
         if Pairss.even_week == week:
