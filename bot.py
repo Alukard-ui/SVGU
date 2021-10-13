@@ -39,6 +39,8 @@ class Bot:
     def on_event(self,event):
         if event.type != VkBotEventType.MESSAGE_NEW:
             return
+        if random.randint(0,100) < 5:
+            self.send_message('базилик',user_id)
         user_id = event.object.message['peer_id']
         text = event.object.message['text']
         if int(user_id)-2*10**9<0:
