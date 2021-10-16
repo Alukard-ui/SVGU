@@ -62,6 +62,8 @@ SCENARIOS = {
 
 DEFAULT_ANSWER = 'Я хз'
 
+RANDOM_ANSWER = ['базилик','ромашка']
+
 DB_CONFIG = dict(
     provider='sqlite',
     filename='pairs.db'

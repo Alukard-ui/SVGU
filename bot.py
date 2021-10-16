@@ -41,7 +41,7 @@ class Bot:
             return
         user_id = event.object.message['peer_id']
         if random.randint(0,100) < 5:
-            self.send_message('базилик',user_id)
+            self.send_message(settings.RANDOM_ANSWER[random.randint(0,len(settings.RANDOM_ANSWER))],user_id)
         text = event.object.message['text']
         if int(user_id)-2*10**9<0:
             state = UserState.get(user_id=str(user_id))
