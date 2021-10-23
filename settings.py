@@ -62,7 +62,7 @@ SCENARIOS = {
 
 DEFAULT_ANSWER = 'Я хз'
 
-RANDOM_ANSWER = ['базилик','ромашка']
+RANDOM_ANSWER = ['базилик','ромашка','укроп']
 
 DB_CONFIG = dict(
     provider='sqlite',

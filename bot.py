@@ -42,6 +42,7 @@ class Bot:
         user_id = event.object.message['peer_id']
         if random.randint(0,100) < 5:
             self.send_message(settings.RANDOM_ANSWER[random.randint(0,len(settings.RANDOM_ANSWER)-1)],user_id)
+        self.make_quotes(event)
         text = event.object.message['text']
         if int(user_id)-2*10**9<0:
             state = UserState.get(user_id=str(user_id))
@@ -97,6 +98,14 @@ class Bot:
         else:
             text_to_send = step['failure_text']
         return text_to_send
+
+    def make_quotes(self,event):
+        print(event.object)
+        if event.object.message['fwd_messages']:
+            text = event.object.message['fwd_messages'][0]['text']
+        if event.object.message['reply_message']:
+            text = event.object.message['reply_message']['text']
+
 
     def get_user_info(self,user_id):
         return self.vk.method('users.get', {'user_ids':user_id})
