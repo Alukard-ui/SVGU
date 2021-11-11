@@ -100,11 +100,21 @@ class Bot:
         return text_to_send
 
     def make_quotes(self,event):
-        print(event.object)
-        if event.object.message['fwd_messages']:
-            text = event.object.message['fwd_messages'][0]['text']
-        if event.object.message['reply_message']:
-            text = event.object.message['reply_message']['text']
+        trText = ''
+        user_id = event.object.message['peer_id']
+        if event.object.message['text'].lower() == 'перевод':
+            if event.object.message['fwd_messages']:
+                text = event.object.message['fwd_messages'][0]['text'].lower()
+            if event.object.message['reply_message']:
+                text = event.object.message['reply_message']['text'].lower()
+            if any(token in text.lower() for token in settings.TRANSLATOR['test']):
+                for at in text:
+                    for a in range(len(settings.TRANSLATOR['ru'])):
+                        if at == settings.TRANSLATOR['en'][a]:
+                            trText += settings.TRANSLATOR['ru'][a]
+                        if at == ' ':
+                            trText += ' '
+                self.send_message(trText,user_id)
 
 
     def get_user_info(self,user_id):

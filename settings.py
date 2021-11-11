@@ -10,18 +10,18 @@ INTENTS = [
                   '\n\n Пока есть только расписание, для того чтобы оно появилось надо написать ?расписание или ?пары'
     },
     {
-        'name':'Schedule',
-        'tokens':('?расписание','?пары'),
+        'name': 'Schedule',
+        'tokens': ('?расписание', '?пары'),
         'scenario': None,
-        'answer':None,
-        'group_handler':'group_handler_Schedule'
+        'answer': None,
+        'group_handler': 'group_handler_Schedule'
     },
     {
-    'name':'room',
-        'tokens':('?аудитория','?ауд'),
+        'name': 'room',
+        'tokens': ('?аудитория', '?ауд'),
         'scenario': None,
-        'answer':None,
-        'group_handler':'group_handler_room'
+        'answer': None,
+        'group_handler': 'group_handler_room'
     }
 ]
 
@@ -62,7 +62,18 @@ SCENARIOS = {
 
 DEFAULT_ANSWER = 'Я хз'
 
-RANDOM_ANSWER = ['базилик','ромашка','укроп']
+TRANSLATOR = {
+    'ru':'йцукенгшщзхъфывапролджэячсмитьбю.-',
+    'en':'qwertyuiop[]asdfghjkl;\'zxcvbnm,./-',
+    'test':'qwertyuiopasdfghjklzxcvbnm'
+
+}
+
+RANDOM_ANSWER = ['базилик', 'ромашка', 'укроп', 'Кризис социализации младших школьников', 'Кризис среднего возраста',
+                 'Кризис четверти жизни',
+                 'Нормативные кризисы развития', 'Периодизация развития зрелой личности В. Ф. Моргуна и Н. Ю. Ткачевой', 'Подростковый '
+                                                                                                                         'кризис',
+                 'Кризис новорождённости','Кризис одного года','Кризис семи лет','Кризис трёх лет']
 
 DB_CONFIG = dict(
     provider='sqlite',
