@@ -40,8 +40,8 @@ class Bot:
         if event.type != VkBotEventType.MESSAGE_NEW:
             return
         user_id = event.object.message['peer_id']
-        /*if random.randint(0,100) < 5:
-            self.send_message(settings.RANDOM_ANSWER[random.randint(0,len(settings.RANDOM_ANSWER)-1)],user_id)
+        #if random.randint(0,100) < 5:
+            #self.send_message(settings.RANDOM_ANSWER[random.randint(0,len(settings.RANDOM_ANSWER)-1)],user_id)
         self.make_quotes(event)*/
         text = event.object.message['text']
         if int(user_id)-2*10**9<0:
